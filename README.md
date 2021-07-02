@@ -13,7 +13,7 @@ Mais ce n’est qu’une des nombreuses fonctionnalités de cette application
 
 
 
-[![PayPal](https://img.shields.io/badge/paypal-donate-yellow.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=E6RKPR34SH6CU)  
+[![PayPal](https://img.shields.io/badge/paypal-donate-yellow.svg)](https://paypal.me/pools/c/8fifeApVub)  
 
 © Tous droits réservés - 2021
 
