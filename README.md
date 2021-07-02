@@ -3,7 +3,7 @@
 <h3>L’APPLICATION POUR LES MALENTENDANTS </h3>
 <br>
 <br>
-[![forthebadge](https://forthebadge.com/images/badges/made-with-swift.svg)](https://forthebadge.com)
+<img src="https://forthebadge.com/images/badges/made-with-swift.svg">
 
 <br>
 <h2>À QUOI SERT L’APPLICATION ?</h2>
