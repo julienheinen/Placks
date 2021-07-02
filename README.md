@@ -2,6 +2,10 @@
 <br>
 <h3>L’APPLICATION POUR LES MALENTENDANTS </h3>
 <br>
+<br>
+[![forthebadge](https://forthebadge.com/images/badges/made-with-swift.svg)](https://forthebadge.com)
+
+<br>
 <h2>À QUOI SERT L’APPLICATION ?</h2>
 
 L’application renferme de nombreuses fonctionnalités qui ont un but : permettre de contourner les problèmes de la barrière de la langue. En effet, les malentendants et les muets utilisent le langage des signes pour communiquer. Mais ils ne peuvent communiquer qu’avec très peu de personnes. Alors, Placks les aide. Elle est doté de fonctionnalités comme la reconnaissance de gestes. La reconnaissance de gestes permet de retranscrire les gestes en en texte. Il suffit de prendre en vidéo une personne qui utilise la langue des signes, et tout sera retranscrit en texte. 
