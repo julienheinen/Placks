@@ -23,7 +23,7 @@ struct scrollImages: View {
                                 Image("video-texte")
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
-                                    .frame(width: 130, height: 170)
+                                    .frame(width: 140, height: 170)
                                     .clipped()
                                     .cornerRadius(30.0)
                                 Image("Dictionnaire")
