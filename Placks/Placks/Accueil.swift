@@ -70,11 +70,9 @@ struct PageAccueil: View {
                                .resizable()
                                .frame(width: 27, height: 27)
                                .offset(x: 60, y: -310)
-               
                            
-                        
-                       
-            }
+                           
+                       }
                        .padding()
 
             scrollImages()

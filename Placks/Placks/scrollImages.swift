@@ -50,7 +50,6 @@ struct scrollImages: View {
                     Divider()
                     Spacer()
                 }
-       
         .frame(width: 400, height: 100, alignment: .center)
                   
             
