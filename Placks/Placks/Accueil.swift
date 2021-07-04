@@ -69,7 +69,8 @@ struct PageAccueil: View {
                            Image(systemName: "person.fill.viewfinder")
                                .resizable()
                                .frame(width: 27, height: 27)
-                               .offset(x: 60, y: -310)
+                               .offset(x: 61, y: -310)
+                Text("test")
                            
                         
                        
