@@ -49,7 +49,7 @@ struct PageAccueil: View {
     
     var body: some View{
         ZStack{
-        NavigationView{
+        
             
             
             HStack(){
@@ -71,15 +71,12 @@ struct PageAccueil: View {
                                .frame(width: 27, height: 27)
                                .offset(x: 60, y: -310)
                            
-                           Text("test ppur voir github")
-                            .background(Color.purple)
-                            .offset(x: 30, y: 50)
-                            .frame(width: 40, height: 70, alignment: .leading)
+                        
                        
             }
                        .padding()
 
-            }
+            scrollImages()
         }
     }
 }
