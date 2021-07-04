@@ -74,6 +74,7 @@ struct PageAccueil: View {
                            
                        }
                        .padding()
+            ScrollImages()
 
             }
         }
