@@ -1,7 +1,10 @@
 # Placks
+![image](https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white) 
+![image](https://img.shields.io/badge/Swift-FA7343?style=for-the-badge&logo=swift&logoColor=white) 
+![image](https://img.shields.io/badge/Xcode-007ACC?style=for-the-badge&logo=Xcode&logoColor=white)
 
 Placks is an application created in SwiftUI that allows for the recognition of sign language. It uses Core ML and over 30 TB of sign language data. It can transcribe sign language into text or speech. The application is currently in development and the AI requires a significant amount of resources for training.
-![image]({https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white}) ![image]({https://img.shields.io/badge/Swift-FA7343?style=for-the-badge&logo=swift&logoColor=white}) ![image]({https://img.shields.io/badge/Xcode-007ACC?style=for-the-badge&logo=Xcode&logoColor=white})
+
 ## Features
 
 - Sign language recognition using Core ML (in development)
