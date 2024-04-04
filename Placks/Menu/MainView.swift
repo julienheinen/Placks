@@ -8,17 +8,23 @@
 import SwiftUI
 
 struct MainView: View {
+    
+    var lightBlackGradient = Color(red: 54 / 255, green: 53 / 255, blue: 50 / 255)
+
+    
     //selected Tab...
-    @State var selectedTab = "Accueil"
+    @State var selectedTab = "Acceuil"
     @State var showMenu = false
+    @State var darkmode = false
+    
     var body: some View {
         
         ZStack{
-            Color("blue")
-                .ignoresSafeArea()
+            
+            LinearView(topColor: darkmode ? lightBlackGradient: .blue,  bottomColor: darkmode ? .black: .purple, opacity: darkmode ? 1:0.7)
             
             //Side Menu...
-            SideMenu(selectedTab: $selectedTab)
+            SideMenu(selectedTab: $selectedTab, darkmode: $darkmode, showMenu: $showMenu)
             
             ZStack{
                 
@@ -31,10 +37,10 @@ struct MainView: View {
                     .offset(x: showMenu ? 25 : 0)
                     .padding(.vertical,30)
             
-            Accueil(selectedTab: $selectedTab)
+                Accueil(darkmode: $darkmode, selectedTab: $selectedTab)
                 .cornerRadius(showMenu ? 15 : 0)
-                
                 }
+            
                 //Scaling and moving
                 .scaleEffect(showMenu ? 0.84 : 1)
                 .offset(x: showMenu ? getRect().width - 120 : 0)
@@ -50,24 +56,8 @@ struct MainView: View {
                        // Animated Drawer Button...
                         VStack(spacing: 5){
                             
-                            Capsule()
-                                .fill(showMenu ? Color.white : Color.primary)
-                                .frame(width: 30, height: 3)
-                            // Rotating...
-                                .rotationEffect(.init(degrees: showMenu ? -50 : 0))
-                                .offset(x: showMenu ? 2 : 0, y: showMenu ? 9 : 0)
-                            VStack(spacing: 5){
-                                
-                                Capsule()
-                                    .fill(showMenu ? Color.white : Color.primary)
-                                    .frame(width: 30, height: 3)
-                                //Movig Up when clicked...
-                                Capsule()
-                                    .fill(showMenu ? Color.white : Color.primary)
-                                    .frame(width: 30, height: 3)
-                                    .offset(y: showMenu ? -8 : 0)
-                            }
-                            .rotationEffect(.init(degrees: showMenu ? 50 : 0))
+                            MenuButtonView(colorLinesHomePage: darkmode ? .white : .black, showMenu: showMenu)
+                            
                         }
                         
                         
@@ -83,9 +73,52 @@ struct MainView: View {
     }
 }
 
+// struct to make the linear gradient on the side menu (light / dark mode)
+struct LinearView: View {
+    
+    var topColor : Color
+    var bottomColor : Color
+    var opacity: Double
+    
+    var body: some View {
+        LinearGradient(gradient: Gradient(colors: [topColor,bottomColor]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            .ignoresSafeArea()
+            .opacity(opacity)
+    }
+}
+
+//struct for the menu button
+struct MenuButtonView: View{
+    
+    var colorLinesHomePage: Color
+    var showMenu: Bool
+    
+    var body: some View{
+        Capsule()
+            .fill(showMenu ? Color.white : colorLinesHomePage)
+            .frame(width: 30, height: 3)
+        // Rotating...
+            .rotationEffect(.init(degrees: showMenu ? -50 : 0))
+            .offset(x: showMenu ? 2 : 0, y: showMenu ? 9 : 0)
+        VStack(spacing: 5){
+            
+            Capsule()
+                .fill(showMenu ? Color.white : colorLinesHomePage)
+                .frame(width: 30, height: 3)
+            //Movig Up when clicked...
+            Capsule()
+                .fill(showMenu ? Color.white : colorLinesHomePage)
+                .frame(width: 30, height: 3)
+                .offset(y: showMenu ? -8 : 0)
+        }
+        .rotationEffect(.init(degrees: showMenu ? 50 : 0))
+    }
+}
+
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
+            .preferredColorScheme(.light)
     }
 }
 

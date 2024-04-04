@@ -21,7 +21,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>Nous avons besoin d'accéder à votre caméra pour reconnaître les gestes</string>
+	<string>Essentiel pour la reconnaissance des gestes et des qr codes</string>
 	<key>NSMainNibFile</key>
 	<string>MainView</string>
 	<key>UIApplicationSceneManifest</key>

@@ -1,4 +1,3 @@
-//
 //  CameraView.swift
 //  Placks
 //
