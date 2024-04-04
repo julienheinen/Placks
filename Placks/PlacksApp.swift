@@ -9,10 +9,10 @@ import SwiftUI
 
 @main
 struct PlacksApp: App {
+        
     var body: some Scene {
         WindowGroup {
             ContentView()
-            
         }
     }
     
