@@ -26,7 +26,8 @@ If you would like to contribute to Placks, please submit a pull request with you
 
 ## Credits
 
-Placks was created by Julien Heinen and Alexandre Marchal.
+Placks was created by Julien Heinen.
+thanks to @alexandre324 for his contribution to the project
 
 ## License
 
