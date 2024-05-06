@@ -265,7 +265,11 @@ struct BoxView: View {
                     .cornerRadius(20)
                     .opacity(opacityImages)
             }
+            
+            
         }
+        .background(colorBackground)
+        .ignoresSafeArea()
     }
 }
 

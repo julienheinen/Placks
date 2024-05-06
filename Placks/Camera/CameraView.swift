@@ -1,3 +1,8 @@
+//  CameraView.swift
+//  Placks
+//
+//  Created by Julien Heinen on 02/06/2021.
+//
 import SwiftUI
 import AVKit
 import Vision
