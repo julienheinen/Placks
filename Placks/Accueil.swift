@@ -603,7 +603,7 @@ struct Paramètres: View {
             .padding(.top, 70)
             
         }
-        .background(backgroundColor)
+        //.background(backgroundColor)
         .ignoresSafeArea()
     
     }
