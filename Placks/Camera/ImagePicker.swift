@@ -1,54 +1,54 @@
-//
-//  ImagePicker.swift
-//  Placks
-//
-//  Created by Julien Heinen on 02/06/2021.
-//
-import UIKit
+import Foundation
 import SwiftUI
 
+class ImagePickerCoordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    
+    @Binding var image: UIImage?
+    @Binding var isShown: Bool
+    var controller: MyViewController
+    
+    init(image: Binding<UIImage?>, isShown: Binding<Bool>, controller: MyViewController) {
+        _image = image
+        _isShown = isShown
+        self.controller = controller
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let uiImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            image = uiImage
+            isShown = false
+            useCamera = false
+            controller.changeStatus(useCam: false, img: uiImage)
+        }
+    }
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        isShown = false
+        self.controller.changeStatus(useCam: true, img: self.controller.camImage!)
+    }
+
+}
+
+/* Image picker. */
 struct ImagePicker: UIViewControllerRepresentable {
     
-    var sourceType: UIImagePickerController.SourceType = .photoLibrary
+    typealias UIViewControllerType = UIImagePickerController
+    typealias Coordinator = ImagePickerCoordinator
     
-    @Binding var selectedImage: UIImage
-    @Environment(\.presentationMode) private var presentationMode
-
-    func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController {
-        
-        let imagePicker = UIImagePickerController()
-        imagePicker.allowsEditing = false
-        imagePicker.sourceType = sourceType
-        imagePicker.delegate = context.coordinator
-        
-        return imagePicker
-    }
+    @Binding var image: UIImage?
+    @Binding var isShown: Bool
+    var controller: MyViewController
+    var sourceType: UIImagePickerController.SourceType = .camera
     
     func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<ImagePicker>) {
-        
+    }
+    func makeCoordinator() -> ImagePicker.Coordinator {
+        return ImagePickerCoordinator(image: $image, isShown: $isShown, controller: controller)
+    }
+    func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController {
+        let picker = UIImagePickerController()
+        picker.sourceType = sourceType
+        picker.delegate = context.coordinator
+        picker.modalPresentationStyle = .fullScreen
+        return picker
     }
     
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
-    }
-    
-    final class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-        
-        var parent: ImagePicker
-        
-        init(_ parent: ImagePicker) {
-            self.parent = parent
-        }
-        
-        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-            
-            if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-                parent.selectedImage = image
-            }
-            
-            parent.presentationMode.wrappedValue.dismiss()
-        }
-    }
 }
-    
-

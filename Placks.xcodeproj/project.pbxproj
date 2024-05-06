@@ -12,13 +12,16 @@
 		2765A4E0265283A500FAECCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2765A4DF265283A500FAECCF /* Assets.xcassets */; };
 		2765A4E3265283A500FAECCF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2765A4E2265283A500FAECCF /* Preview Assets.xcassets */; };
 		277CEE2A266773F700954078 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277CEE29266773F700954078 /* ImagePicker.swift */; };
-		277CEE2C266776B500954078 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277CEE2B266776B500954078 /* CameraView.swift */; };
 		27AF05352688949D00DE4B3D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AF05342688949D00DE4B3D /* MainView.swift */; };
 		27AF05372688992200DE4B3D /* TabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AF05362688992200DE4B3D /* TabButton.swift */; };
 		27AF053926889E1C00DE4B3D /* CustomCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AF053826889E1C00DE4B3D /* CustomCorners.swift */; };
 		27AF053B2689071D00DE4B3D /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AF053A2689071D00DE4B3D /* SideMenu.swift */; };
 		27AF053F2689099D00DE4B3D /* Accueil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AF053E2689099D00DE4B3D /* Accueil.swift */; };
 		27CF10F726D24DD500ED5442 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 27CF10F626D24DD500ED5442 /* CodeScanner */; };
+		F929401C2BE8D95600F1922D /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F929401B2BE8D95600F1922D /* MyViewController.swift */; };
+		F929401E2BE8D9D800F1922D /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F929401D2BE8D9D800F1922D /* CameraView.swift */; };
+		F92940202BE8DA1E00F1922D /* UpdateTextViewExternal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F929401F2BE8DA1E00F1922D /* UpdateTextViewExternal.swift */; };
+		F92940222BE8DB7700F1922D /* LobeModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F92940212BE8DB7600F1922D /* LobeModel.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,12 +32,15 @@
 		2765A4E2265283A500FAECCF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2765A4E4265283A500FAECCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		277CEE29266773F700954078 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
-		277CEE2B266776B500954078 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		27AF05342688949D00DE4B3D /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		27AF05362688992200DE4B3D /* TabButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabButton.swift; sourceTree = "<group>"; };
 		27AF053826889E1C00DE4B3D /* CustomCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCorners.swift; sourceTree = "<group>"; };
 		27AF053A2689071D00DE4B3D /* SideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenu.swift; sourceTree = "<group>"; };
 		27AF053E2689099D00DE4B3D /* Accueil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Accueil.swift; path = ../Accueil.swift; sourceTree = "<group>"; };
+		F929401B2BE8D95600F1922D /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
+		F929401D2BE8D9D800F1922D /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		F929401F2BE8DA1E00F1922D /* UpdateTextViewExternal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTextViewExternal.swift; sourceTree = "<group>"; };
+		F92940212BE8DB7600F1922D /* LobeModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = LobeModel.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +60,6 @@
 			children = (
 				2765A4DA2652835E00FAECCF /* Placks */,
 				2765A4D92652835E00FAECCF /* Products */,
-				F97E0F8F287E29CA00873B6C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,17 +108,13 @@
 		27CF10F926D257CD00ED5442 /* Camera */ = {
 			isa = PBXGroup;
 			children = (
+				F92940212BE8DB7600F1922D /* LobeModel.mlmodel */,
 				277CEE29266773F700954078 /* ImagePicker.swift */,
-				277CEE2B266776B500954078 /* CameraView.swift */,
+				F929401B2BE8D95600F1922D /* MyViewController.swift */,
+				F929401D2BE8D9D800F1922D /* CameraView.swift */,
+				F929401F2BE8DA1E00F1922D /* UpdateTextViewExternal.swift */,
 			);
 			path = Camera;
-			sourceTree = "<group>";
-		};
-		F97E0F8F287E29CA00873B6C /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,12 +195,15 @@
 			files = (
 				27AF05352688949D00DE4B3D /* MainView.swift in Sources */,
 				27AF053F2689099D00DE4B3D /* Accueil.swift in Sources */,
+				F92940202BE8DA1E00F1922D /* UpdateTextViewExternal.swift in Sources */,
 				27AF053B2689071D00DE4B3D /* SideMenu.swift in Sources */,
+				F92940222BE8DB7700F1922D /* LobeModel.mlmodel in Sources */,
+				F929401E2BE8D9D800F1922D /* CameraView.swift in Sources */,
 				27AF05372688992200DE4B3D /* TabButton.swift in Sources */,
-				277CEE2C266776B500954078 /* CameraView.swift in Sources */,
 				27AF053926889E1C00DE4B3D /* CustomCorners.swift in Sources */,
 				2765A4DE2652836000FAECCF /* ContentView.swift in Sources */,
 				277CEE2A266773F700954078 /* ImagePicker.swift in Sources */,
+				F929401C2BE8D95600F1922D /* MyViewController.swift in Sources */,
 				2765A4DC2652835F00FAECCF /* PlacksApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

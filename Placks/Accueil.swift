@@ -250,23 +250,21 @@ struct FriendBox : Identifiable{
 
 // cards features structurs
 struct BoxView: View {
-    
-    
-    let data : Box
+    let data: Box
     var opacityImages: Double
-    
-    var body: some View{
-        VStack{
+    var action: (Int) -> Void
+
+    var body: some View {
+        VStack {
             Button(action: {
-                print("ok")
+                self.action(data.id)
             }) {
-                Image(self.data.imageUrl)
+                Image(data.imageUrl)
                     .resizable()
                     .frame(width: 90, height: 130)
                     .cornerRadius(20)
                     .opacity(opacityImages)
             }
-   
         }
     }
 }
@@ -294,118 +292,124 @@ struct FriendsView: View {
 }
 
 //All sub Views...
-struct PageAccueil: View{
-    
-    let data:[Box] = [
-        /* j'ai mis tes images et des textes au hasard mais tu peux changer comme tu veux*/
-       
+struct PageAccueil: View {
+    @State private var selectedView: Int? = nil
+
+    let data: [Box] = [
         Box(id: 1, imageUrl: "Commencer-conver"),
         Box(id: 2, imageUrl: "video-texte"),
         Box(id: 3, imageUrl: "Dictionnaire"),
         Box(id: 4, imageUrl: "texte-gestes"),
         Box(id: 5, imageUrl: "Carte"),
-        
     ]
-    
-    let friends:[FriendBox] = [
-        /* j'ai mis tes images et des textes au hasard mais tu peux changer comme tu veux*/
+
+    let friends: [FriendBox] = [
         FriendBox(id: 1, title: "Julien Heinen", imageUrl: "userimage"),
         FriendBox(id: 2, title: "Alexandre Marchal", imageUrl: "userimage")
     ]
-    
+
     var colorBackground: Color
     var colorTextFriends: Color
     var colorBackgroundHeader: Color
     var colorTextHeader: Color
     var opacityImages: Double
     var backgroundColorFriendStrip: Color
-    
-    
-    var body: some View{
-        ZStack{
-            VStack{
-                HStack(spacing: 70){
-                    Spacer()
-                    Text("Accueil")
-                        .font(.system(size: 29))
-                        .opacity(0.9)
-                        .foregroundColor(colorTextHeader)
-                        .multilineTextAlignment(.center)
-                    HStack{
-                        Image(systemName: "qrcode.viewfinder")
-                            .resizable()
-                            .frame(width: 27, height: 27)
-                            .foregroundColor(colorTextFriends)
-                        
-                        Image(systemName: "person.fill.viewfinder")
-                            .resizable()
-                            .frame(width: 27, height: 27)
-                            .padding()
-                            .foregroundColor(colorTextFriends)
-                    }
-                    
-                }
-                .padding(.top, 70)
-                .background(colorBackgroundHeader)
-                
-                ScrollView (.vertical, showsIndicators: false){
-                    
-                    
-                    
-                    
-                    ScrollView (.horizontal, showsIndicators: false){
-                        HStack {
-                            // use the data to create cards
-                            ForEach(data){ i in
-                                BoxView(data: i, opacityImages: opacityImages)
-                            }
-                            .padding(5)
-                            .padding(.top, 30)
-                            .padding(.bottom, 10)
-                        }
-                        .padding(.leading, 20)
-                    }
-                    
-                    
-                    
-                    HStack{
-                        Text("Amis")
-                            .font(.system(size: 20))
-                            .font(.headline)
-                            .padding(17)
-                            .foregroundColor(colorTextFriends)
-                        
+
+    var body: some View {
+        NavigationView {
+            ZStack {
+                VStack {
+                    HStack(spacing: 70) {
                         Spacer()
-                    }
-                    .frame(maxWidth: .infinity)
-                    .background(backgroundColorFriendStrip)
-                    .opacity(0.7)
-                    
-                    
-                    
-                    ScrollView (.horizontal, showsIndicators: false){
+                        Text("Accueil")
+                            .font(.system(size: 29))
+                            .opacity(0.9)
+                            .foregroundColor(colorTextHeader)
+                            .multilineTextAlignment(.center)
                         HStack {
-                            // use the data to create cards
-                            ForEach(friends){ j in
-                                FriendsView(friends: j, colorTextFriends: colorTextFriends, opacityImages: opacityImages)
-                                
-                            }
-                            .padding(.top, 10)
-                            .padding(.bottom, 10)
+                            Image(systemName: "qrcode.viewfinder")
+                                .resizable()
+                                .frame(width: 27, height: 27)
+                                .foregroundColor(colorTextFriends)
+
+                            Image(systemName: "person.fill.viewfinder")
+                                .resizable()
+                                .frame(width: 27, height: 27)
+                                .padding()
+                                .foregroundColor(colorTextFriends)
                         }
-                        .padding(.leading, 16)
                     }
+                    .padding(.top, 70)
+                    .background(colorBackgroundHeader)
+
+                    ScrollView(.vertical, showsIndicators: false) {
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack {
+                                ForEach(data) { i in
+                                    BoxView(data: i, opacityImages: opacityImages) {_ in 
+                                        selectedView = i.id
+                                    }
+                                    .padding(5)
+                                    .padding(.top, 30)
+                                    .padding(.bottom, 10)
+                                }
+                            }
+                            .padding(.leading, 20)
+                        }
+
+                        HStack {
+                            Text("Amis")
+                                .font(.system(size: 20))
+                                .font(.headline)
+                                .padding(17)
+                                .foregroundColor(colorTextFriends)
+
+                            Spacer()
+                        }
+                        .frame(maxWidth: .infinity)
+                        .background(backgroundColorFriendStrip)
+                        .opacity(0.7)
+
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack {
+                                ForEach(friends) { j in
+                                    FriendsView(friends: j, colorTextFriends: colorTextFriends, opacityImages: opacityImages)
+                                }
+                                .padding(.top, 10)
+                                .padding(.bottom, 10)
+                            }
+                            .padding(.leading, 16)
+                        }
+                    }
+
+                    Spacer()
                 }
-                
-                Spacer()
             }
-            
-            
+            .background(colorBackground)
+            .ignoresSafeArea()
+            .navigationBarTitle("")
+            .navigationBarHidden(true)
+            .navigationBarItems(trailing: NavigationLink(destination: getView(), tag: selectedView ?? 0, selection: $selectedView) {
+                EmptyView()
+            })
+
         }
-        .background(colorBackground)
-        .ignoresSafeArea()
+    }
+
+    func getView() -> some View {
+        switch selectedView {
+        case 1:
+            return AnyView(MainView())
+        case 2:
+            return AnyView(CameraView())
+        case 3:
+            return AnyView(LoginView())
+        default:
+            return AnyView(Text("Impossible"))
+        }
     }
 }
+
 
 
 struct Notifications: View {
@@ -426,23 +430,6 @@ struct Notifications: View {
                 Text(" appuyez sur moi")
             }
             
-            
-        }
-    }
-}
-
-struct PongGame: View {
-    
-    var text: String
-    
-    var body: some View{
-        
-        NavigationView{
-            
-            Text(text)
-                .font(.largeTitle)
-                .fontWeight(.heavy)
-                .foregroundColor(.primary)
             
         }
     }
