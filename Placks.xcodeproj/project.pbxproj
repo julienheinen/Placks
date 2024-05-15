@@ -18,10 +18,14 @@
 		27AF053B2689071D00DE4B3D /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AF053A2689071D00DE4B3D /* SideMenu.swift */; };
 		27AF053F2689099D00DE4B3D /* Accueil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AF053E2689099D00DE4B3D /* Accueil.swift */; };
 		27CF10F726D24DD500ED5442 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 27CF10F626D24DD500ED5442 /* CodeScanner */; };
+		F925984B2BF52BC400549396 /* QrCodeGeneratorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F925984A2BF52BC400549396 /* QrCodeGeneratorView.swift */; };
+		F925984D2BF534B400549396 /* QrCodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F925984C2BF534B400549396 /* QrCodeScannerView.swift */; };
+		F925984F2BF5378400549396 /* ProfilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F925984E2BF5378400549396 /* ProfilView.swift */; };
 		F929401C2BE8D95600F1922D /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F929401B2BE8D95600F1922D /* MyViewController.swift */; };
 		F929401E2BE8D9D800F1922D /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F929401D2BE8D9D800F1922D /* CameraView.swift */; };
 		F92940202BE8DA1E00F1922D /* UpdateTextViewExternal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F929401F2BE8DA1E00F1922D /* UpdateTextViewExternal.swift */; };
 		F92940222BE8DB7700F1922D /* LobeModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F92940212BE8DB7600F1922D /* LobeModel.mlmodel */; };
+		F95104D12BF20D7300972AE0 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95104D02BF20D7300972AE0 /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,10 +41,14 @@
 		27AF053826889E1C00DE4B3D /* CustomCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCorners.swift; sourceTree = "<group>"; };
 		27AF053A2689071D00DE4B3D /* SideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenu.swift; sourceTree = "<group>"; };
 		27AF053E2689099D00DE4B3D /* Accueil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Accueil.swift; path = ../Accueil.swift; sourceTree = "<group>"; };
+		F925984A2BF52BC400549396 /* QrCodeGeneratorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrCodeGeneratorView.swift; sourceTree = "<group>"; };
+		F925984C2BF534B400549396 /* QrCodeScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrCodeScannerView.swift; sourceTree = "<group>"; };
+		F925984E2BF5378400549396 /* ProfilView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilView.swift; sourceTree = "<group>"; };
 		F929401B2BE8D95600F1922D /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
 		F929401D2BE8D9D800F1922D /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		F929401F2BE8DA1E00F1922D /* UpdateTextViewExternal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTextViewExternal.swift; sourceTree = "<group>"; };
 		F92940212BE8DB7600F1922D /* LobeModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = LobeModel.mlmodel; sourceTree = "<group>"; };
+		F95104D02BF20D7300972AE0 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +82,8 @@
 		2765A4DA2652835E00FAECCF /* Placks */ = {
 			isa = PBXGroup;
 			children = (
+				F95104D22BF2703900972AE0 /* QRcode */,
+				F95104CF2BF20CD100972AE0 /* Connexion */,
 				27CF10F926D257CD00ED5442 /* Camera */,
 				27AF05332688946400DE4B3D /* Menu */,
 				2765A4DB2652835F00FAECCF /* PlacksApp.swift */,
@@ -117,6 +127,24 @@
 			path = Camera;
 			sourceTree = "<group>";
 		};
+		F95104CF2BF20CD100972AE0 /* Connexion */ = {
+			isa = PBXGroup;
+			children = (
+				F925984E2BF5378400549396 /* ProfilView.swift */,
+				F95104D02BF20D7300972AE0 /* LoginView.swift */,
+			);
+			path = Connexion;
+			sourceTree = "<group>";
+		};
+		F95104D22BF2703900972AE0 /* QRcode */ = {
+			isa = PBXGroup;
+			children = (
+				F925984A2BF52BC400549396 /* QrCodeGeneratorView.swift */,
+				F925984C2BF534B400549396 /* QrCodeScannerView.swift */,
+			);
+			path = QRcode;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -156,7 +184,7 @@
 			};
 			buildConfigurationList = 2765A4D32652835E00FAECCF /* Build configuration list for PBXProject "Placks" */;
 			compatibilityVersion = "Xcode 11.4";
-			developmentRegion = en;
+			developmentRegion = fr;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -195,14 +223,18 @@
 			files = (
 				27AF05352688949D00DE4B3D /* MainView.swift in Sources */,
 				27AF053F2689099D00DE4B3D /* Accueil.swift in Sources */,
+				F925984F2BF5378400549396 /* ProfilView.swift in Sources */,
 				F92940202BE8DA1E00F1922D /* UpdateTextViewExternal.swift in Sources */,
 				27AF053B2689071D00DE4B3D /* SideMenu.swift in Sources */,
+				F925984B2BF52BC400549396 /* QrCodeGeneratorView.swift in Sources */,
 				F92940222BE8DB7700F1922D /* LobeModel.mlmodel in Sources */,
 				F929401E2BE8D9D800F1922D /* CameraView.swift in Sources */,
 				27AF05372688992200DE4B3D /* TabButton.swift in Sources */,
 				27AF053926889E1C00DE4B3D /* CustomCorners.swift in Sources */,
+				F925984D2BF534B400549396 /* QrCodeScannerView.swift in Sources */,
 				2765A4DE2652836000FAECCF /* ContentView.swift in Sources */,
 				277CEE2A266773F700954078 /* ImagePicker.swift in Sources */,
+				F95104D12BF20D7300972AE0 /* LoginView.swift in Sources */,
 				F929401C2BE8D95600F1922D /* MyViewController.swift in Sources */,
 				2765A4DC2652835F00FAECCF /* PlacksApp.swift in Sources */,
 			);
@@ -263,7 +295,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -319,7 +351,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -339,7 +371,7 @@
 				DEVELOPMENT_TEAM = 6SD9YP3C88;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Placks/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -361,7 +393,7 @@
 				DEVELOPMENT_TEAM = 6SD9YP3C88;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Placks/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

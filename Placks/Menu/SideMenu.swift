@@ -14,6 +14,7 @@ struct SideMenu: View {
     @Binding var showMenu: Bool
     @State private var showLogin = false
     @State private var isLoggedIn = false
+    @State private var isShowingProfileView = false
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10, content: {
@@ -31,12 +32,15 @@ struct SideMenu: View {
                     .fontWeight(.heavy)
                     .foregroundColor(.white)
 
-                Button(action: {}, label: {
+                Button(action: {
+                    isShowingProfileView = true
+                }, label: {
                     Text("Voir le profil")
                         .fontWeight(.semibold)
                         .foregroundColor(.white)
                         .opacity(0.7)
                 })
+                .background(NavigationLink(destination: ProfilView(), isActive: $isShowingProfileView) { EmptyView() })
             })
 
             // tab buttons

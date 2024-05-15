@@ -12,6 +12,7 @@ struct ContentView: View {
     @State private var isLoggedIn = false
     var test=0
     var body: some View {
+        
         switch test {
         case 0:
             MainView()

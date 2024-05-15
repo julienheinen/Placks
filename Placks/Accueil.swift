@@ -253,6 +253,7 @@ struct BoxView: View {
     let data: Box
     var opacityImages: Double
     var action: (Int) -> Void
+    
 
     var body: some View {
         VStack {
@@ -268,7 +269,7 @@ struct BoxView: View {
             
             
         }
-        .background(colorBackground)
+       // .background(colorBackground)
         .ignoresSafeArea()
     }
 }
@@ -331,17 +332,25 @@ struct PageAccueil: View {
                             .foregroundColor(colorTextHeader)
                             .multilineTextAlignment(.center)
                         HStack {
-                            Image(systemName: "qrcode.viewfinder")
-                                .resizable()
-                                .frame(width: 27, height: 27)
-                                .foregroundColor(colorTextFriends)
-
+                            Button(action: {
+                                selectedView = 4
+                            }) {
+                                Image(systemName: "qrcode.viewfinder")
+                                    .resizable()
+                                    .frame(width: 27, height: 27)
+                                    .foregroundColor(colorTextFriends)
+                            }
+                            Button(action: {
+                                selectedView = 1
+                            }) {
                             Image(systemName: "person.fill.viewfinder")
                                 .resizable()
                                 .frame(width: 27, height: 27)
                                 .padding()
                                 .foregroundColor(colorTextFriends)
+                            
                         }
+                    }
                     }
                     .padding(.top, 70)
                     .background(colorBackgroundHeader)
@@ -403,11 +412,15 @@ struct PageAccueil: View {
     func getView() -> some View {
         switch selectedView {
         case 1:
-            return AnyView(MainView())
+            return AnyView(QrCodeGeneratorView())
         case 2:
             return AnyView(CameraView())
         case 3:
             return AnyView(LoginView())
+        case 4:
+            return AnyView(QrCodeScannerView())
+        case 5:
+            return AnyView(ProfilView())
         default:
             return AnyView(Text("Impossible"))
         }
@@ -625,175 +638,5 @@ struct Aide: View {
     }
 }
 
-struct LoginView: View {
-    @State private var email = ""
-    @State private var password = ""
-    @State private var showError = false
-    @State private var isLoggedIn = false
-    @State private var isRegisterViewPresented = false
-
-    @State private var darkmode = false
-
-    var body: some View {
-        VStack {
-            Spacer()
-            Text("Sign In")
-                .font(.largeTitle)
-                .fontWeight(.semibold)
-                .padding(.bottom, 20)
-            UsernameTextField(username: $email)
-            PasswordSecureField(password: $password)
-            if showError {
-                Text("Vérifiez vos informations de connexion")
-                    .offset(y: -10)
-                    .foregroundColor(.red)
-            }
-            Button(action: {
-                // Ajoutez votre logique d'authentification ici
-                if email == "test@test.com" && password == "mdp" {
-                    isLoggedIn = true
-                    
-                } else {
-                    showError = true
-                }
-            }) {
-                LoginButtonContent()
-            }
-            .padding(.top, 20)
-            Button(action: {
-                isRegisterViewPresented = true
-            }) {
-                Text("Créer un compte")
-                    .font(.headline)
-                    .foregroundColor(.blue)
-            }
-            .padding(.top, 20)
-            Spacer()
-        }
-        .padding()
-        .fullScreenCover(isPresented: $isLoggedIn) {
-            // Redirigez vers la page d'accueil ici
-            MainView()
-        }
-        .sheet(isPresented: $isRegisterViewPresented) {
-            RegisterView()
-        }
-    }
-}
-
-struct RegisterView: View {
-    @State private var email = ""
-    @State private var password = ""
-    @State private var confirmPassword = ""
-    @State private var showError = false
-    @State private var isRegistered = false
-
-    var body: some View {
-        VStack {
-            Spacer()
-            Text("Créer un compte")
-                .font(.largeTitle)
-                .fontWeight(.semibold)
-                .padding(.bottom, 20)
-            UsernameTextField(username: $email)
-            PasswordSecureField(password: $password)
-            PasswordSecureField(password: $confirmPassword)
-                .padding(.bottom, 20)
-            if showError {
-                Text("Les mots de passe ne correspondent pas")
-                    .offset(y: -10)
-                    .foregroundColor(.red)
-            }
-            Button(action: {
-                // Ajoutez votre logique d'inscription ici
-                if password == confirmPassword {
-                    isRegistered = true
-                } else {
-                    showError = true
-                }
-            }) {
-                LoginButtonContent()
-            }
-            .padding(.top, 20)
-            Spacer()
-        }
-        .padding()
-        .fullScreenCover(isPresented: $isRegistered) {
-            // Redirigez vers la page de connexion ou d'accueil ici
-            LoginView()
-        }
-    }
-}
-
-struct UsernameTextField: View {
-    @Binding var username: String
-    var body: some View {
-        return TextField("Adresse e-mail", text: $username)
-            .padding()
-            .cornerRadius(5.0)
-            .padding(.bottom, 20)
-    }
-}
-
-struct LoginButtonContent: View {
-    var body: some View {
-        Text("CONNEXION")
-            .font(.headline)
-            .foregroundColor(.white)
-            .padding()
-            .frame(width: 220, height: 60)
-            .background(Color.green)
-            .cornerRadius(15.0)
-    }
-}
-
-struct PasswordSecureField: View {
-    
-    @Binding var password: String
-    var body: some View {
-        SecureField("mot de passe", text: $password)
-            .padding()
-            .cornerRadius(5.0)
-            .padding(.bottom, 20)
-    }
-}
-
-struct Bambol_Connexion: View {
-
-    @State var username: String = ""
-    @State var password: String = ""
-    
-    @State var authentificationDidFail: Bool = true
-    var body: some View {
-            VStack{
-                Text("Connexion avec Bambol")
-                    .font(.largeTitle)
-                    .fontWeight(.semibold)
-                    .padding(.bottom, 20)
-                Image("userimage")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 150, height: 150)
-                    .clipped()
-                    .cornerRadius(150)
-                    .padding(.bottom, 75)
-                
-                UsernameTextField(username: $username)
-                
-                PasswordSecureField(password: $password)
-                
-                if authentificationDidFail {
-                    Text("Vérifiez vous informations de connexion")
-                        .offset(y: -10)
-                        .foregroundColor(.red)
-                }
-                Button(action: {print("connexion en cours")}) {
-                    LoginButtonContent()
-                }
-            }
-            .padding()
-        
-    }
-}
 
 
