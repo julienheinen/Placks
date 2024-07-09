@@ -30,11 +30,11 @@ struct QrCodeScannerView: View {
         .edgesIgnoringSafeArea(.all) // Add this modifier to ignore the safe area
     }
     
-    func handleScan(result: Result<String, CodeScannerView.ScanError>) {
+    func handleScan(result: Result<ScanResult, ScanError>) {
         isShowingScanner = false
         switch result {
-        case .success(let details):
-            let detailsArray = details.components(separatedBy: "\n")
+        case .success(let result):
+            let detailsArray = result.string.components(separatedBy: "\n")
             guard detailsArray.count == 2 else { return }
             
             let person = QrCodeScannerView()

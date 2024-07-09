@@ -8,14 +8,19 @@
 import SwiftUI
 
 struct ProfilView: View {
-    @State private var name = "Julien"
-    @State private var surname = "Heinen"
-    @State private var age = "30 ans"
-    @State private var signLanguage = "LS Française"
+    //Informations
+    
+    @AppStorage("firstName") var firstName: String = ""
+    @AppStorage("lastName") var lastName: String = ""
+    @AppStorage("birthDate") var birthDate: String = ""
+    @AppStorage("country") var country: String = ""
+    @AppStorage("region") var region: String = ""
+    @AppStorage("ls") var ls: String = ""
     @State private var subscription = "Premium"
-    @State private var email = "julien@hyter.online"
+    @AppStorage("email") var storedEmail: String = ""
     @State private var skillLevel = "Avancé"
     @State private var signsLearned = "500"
+    @AppStorage("pp_profil") var pp_profil: String = ""
     
     var body: some View {
         VStack {
@@ -24,43 +29,71 @@ struct ProfilView: View {
                 .font(.title)
                 .padding(.bottom, 10)
                 .padding()
-            Image("userimage")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 170, height: 170)
-                .cornerRadius(10)
-                .padding(.top, 5)
-                .padding()
             
-            TextField("Nom", text: $name)
-                .padding()
-                .background(Color(.systemGray6))
-                .cornerRadius(8)
-                .padding(.horizontal)
-            
-            TextField("Prénom", text: $surname)
-                .padding()
-                .background(Color(.systemGray6))
-                .cornerRadius(8)
-                .padding(.horizontal)
 
-            TextField("Email", text: $email)
-                .padding()
-                .background(Color(.systemGray6))
-                .cornerRadius(8)
-                .padding(.horizontal)
-            TextField("Age", text: $age)
-                .padding()
-                .background(Color(.systemGray6))
-                .cornerRadius(8)
-                .padding(.horizontal)
-
-            TextField("Langue des signes", text: $signLanguage)
-                .padding()
-                .background(Color(.systemGray6))
-                .cornerRadius(8)
-                .padding(.horizontal)
+            Menu {
+                Button(action: {
+                    pp_profil = "vache"
+                }) {
+                    Label("Vache", systemImage: "vache")
+                }
+                Button(action: {
+                    pp_profil = "chat"
+                }) {
+                    Label("Chat", systemImage: "chat")
+                }
+                Button(action: {
+                    pp_profil = "hibou"
+                }) {
+                    Label("Hiboux", systemImage: "hibou")
+                }
+                Button(action: {
+                    pp_profil = "cheval"
+                }) {
+                    Label("Cheval", systemImage: "cheval")
+                }
+                Button(action: {
+                    pp_profil = "paresseux"
+                }) {
+                    Label("Paresseux", systemImage: "paresseux")
+                }
+            } label: {
+                Image(pp_profil)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 170, height: 170)
+                    .cornerRadius(300)
+                    .padding(.top, 5)
+                    .padding()
+            }
             
+Text($lastName.wrappedValue)
+    .cornerRadius(8)
+    .padding(.horizontal)
+
+Text($firstName.wrappedValue)
+    .cornerRadius(8)
+    .padding(.horizontal)
+
+Text($storedEmail.wrappedValue)
+    .cornerRadius(8)
+    .padding(.horizontal)
+
+Text($birthDate.wrappedValue)
+    .cornerRadius(8)
+    .padding(.horizontal)
+
+Text($ls.wrappedValue)
+    .cornerRadius(8)
+    .padding(.horizontal)
+
+Text($country.wrappedValue)
+    .cornerRadius(8)
+    .padding(.horizontal)
+
+            Text($region.wrappedValue)
+                .cornerRadius(8)
+                .padding(.horizontal)
             Spacer()
         }
     }

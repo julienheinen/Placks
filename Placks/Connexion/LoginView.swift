@@ -1,224 +1,327 @@
-//
-//  LoginView.swift
-//  Placks
-//
-//  Created by Julien Heinen on 13/05/2024.
-//
-
 import SwiftUI
 import AuthenticationServices
-
 struct LoginView: View {
-    @State private var isRegisterViewPresented = false
-    @State private var email = ""
-    @State private var password = ""
+    @Binding var isLoggedIn: Bool
+    @State private var isRegistered: Bool = true
+    @AppStorage("email") var storedEmail: String = ""
+    @AppStorage("password") var storedPassword: String = ""
     @State private var showError = false
-    @State private var isLoggedIn = false
+    @State private var errorMessage = ""
+    @State private var darkmode = false
+    @AppStorage("user_id") var user_id: String = ""
 
     var body: some View {
-        VStack {
-            Spacer()
-            Text("Sign In")
-                .font(.largeTitle)
-                .fontWeight(.semibold)
-                .padding(.bottom, 20)
-            TextField("Adresse e-mail", text: $email)
-                .padding()
-                .cornerRadius(5.0)
-                .padding(.bottom, 20)
-            SecureField("mot de passe", text: $password)
-                .padding()
-                .cornerRadius(5.0)
-                .padding(.bottom, 20)
-            if showError {
-                Text("Vérifiez vos informations de connexion")
-                    .offset(y: -10)
-                    .foregroundColor(.red)
-            }
-            Button(action: {
-    // Ajoutez votre logique d'authentification ici
-    login()
-}) {
-    Text("CONNEXION")
-        .font(.headline)
-        .foregroundColor(.white)
-        .padding()
-        .frame(width: 220, height: 60)
-        .background(Color.green)
-        .cornerRadius(15.0)
-}
-.padding(.top, 20)
-
-Button(action: {
-    isRegisterViewPresented = true
-}) {
-    Text("Créer un compte")
-        .font(.headline)
-        .foregroundColor(.blue)
-}
-.padding(.top, 20)
-Spacer()
-        }
-        .padding()
-        .sheet(isPresented: $isRegisterViewPresented) {
-            RegisterView()
-        }
-    }
-
-    func login() {
-        guard let url = URL(string: "https://vegetalsearch.alwaysdata.net/API/login.php") else {
-            print("Invalid URL")
-            return
-        }
-
-        let loginDetails = ["email": email, "password": password]
-
-        guard let loginData = try? JSONEncoder().encode(loginDetails) else {
-            print("Failed to encode login details")
-            return
-        }
-
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.httpBody = loginData
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            if let data = data {
-                if let decodedResponse = try? JSONDecoder().decode(LoginResponse.self, from: data) {
-                    DispatchQueue.main.async {
-                        self.isLoggedIn = decodedResponse.success
-                        self.showError = !self.isLoggedIn
-                    }
-                    return
+        ZStack {
+            if self.isLoggedIn {
+                ContentView()
+            } else {
+                if self.isRegistered {
+                    LoginViewContent
+                } else {
+                    RegisterView(isRegistered: $isRegistered)
                 }
             }
-            print("Fetch failed: \(error?.localizedDescription ?? "Unknown error")")
-        }.resume()
-    }
-}
-
-struct LoginResponse: Codable {
-    var success: Bool
-}
-    
-    
-    
-struct RegisterView: View {
-    @State private var email = ""
-    @State private var password = ""
-    @State private var showError = false
-    @State private var isRegistered = false
-
-    var body: some View {
-        VStack {
-            Spacer()
-            Text("Inscription")
-                .font(.largeTitle)
-                .fontWeight(.semibold)
-                .padding(.bottom, 20)
-            TextField("Adresse e-mail", text: $email)
-                .padding()
-                .cornerRadius(5.0)
-                .padding(.bottom, 20)
-            SecureField("Mot de passe", text: $password)
-                .padding()
-                .cornerRadius(5.0)
-                .padding(.bottom, 20)
-            if showError {
-                Text("Erreur lors de l'inscription")
-                    .offset(y: -10)
-                    .foregroundColor(.red)
-            }
-            Button(action: {
-                // Ajoutez votre logique d'inscription ici
-                register()
-            }) {
-                Text("INSCRIPTION")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(width: 220, height: 60)
-                    .background(Color.green)
-                    .cornerRadius(15.0)
-            }
-            .padding(.top, 20)
-            Spacer()
         }
-        .padding()
     }
 
-    func register() {
-        guard let url = URL(string: "https://vegetalsearch.alwaysdata.net/API/register.php") else {
-            print("Invalid URL")
-            return
-        }
+    var LoginViewContent: some View {
+        ZStack {
+            //Bg
+            Image("BG_LoginView")
+                .resizable()
+                .overlay(
+                    Rectangle()
+                        .foregroundColor(Color.black.opacity(0.65))
+                )
+                .ignoresSafeArea(.all)
 
-        let registerDetails = ["email": email, "password": password]
-
-        guard let registerData = try? JSONEncoder().encode(registerDetails) else {
-            print("Failed to encode register details")
-            return
-        }
-
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.httpBody = registerData
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            if let data = data {
-                if let decodedResponse = try? JSONDecoder().decode(RegisterResponse.self, from: data) {
-                    DispatchQueue.main.async {
-                        self.isRegistered = decodedResponse.success
-                        self.showError = !self.isRegistered
+            VStack {
+                //Logo
+                Image("Second-logo")
+                    .resizable()
+                    .frame(width: 90, height: 90)
+                    .padding(.top, 45)
+                Spacer()
+                // Form
+                VStack(spacing: 15) {
+                    VStack(alignment: .center, spacing: 30) {
+                        Text("Connexion")
+                            .font(Font.custom("OpenSans-Bold", size: 24))
+                            .foregroundColor(Color.white)
+                            .padding(.bottom, 30)
+                            .padding(.top, 30)
+                        CustomTextfield(placeholder: "Username",
+                                        fontName: "OpenSans-Regular",
+                                        fontSize: 18,
+                                        fontColor: Color.white.opacity(1),
+                                        text: $storedEmail)
+                        CustomSecureField(placeholder: "Password",
+                                          fontName: "OpenSans-Regular",
+                                          fontSize: 18,
+                                          fontColor: Color.white.opacity(0.3),
+                                          text: $storedPassword)
                     }
-                    return
+                    HStack {
+                        Button(action: {
+                            // nuveau password
+                        }) {
+                            Text("Request new password.")
+                                .font(Font.custom("OpenSans-Regular", size: 14))
+                                .foregroundColor(Color.white.opacity(0.65))
+                        }
+                        Spacer()
+                    }
                 }
-            }
-            print("Fetch failed: \(error?.localizedDescription ?? "Unknown error")")
-        }.resume()
-    }
-}
+                .padding(.horizontal, 35)
 
-struct RegisterResponse: Codable {
-    var success: Bool
-}
-    
-    struct UsernameTextField: View {
-        @Binding var username: String
-        var body: some View {
-            return TextField("Adresse e-mail", text: $username)
-                .padding()
-                .cornerRadius(5.0)
-                .padding(.bottom, 20)
-        }
-    }
-    
-    struct LoginButtonContent: View {
-        var body: some View {
-            Text("CONNEXION")
-                .font(.headline)
-                .foregroundColor(.white)
-                .padding()
-                .frame(width: 220, height: 60)
-                .background(Color.green)
-                .cornerRadius(15.0)
-        }
-    }
-    
-    struct PasswordSecureField: View {
+                //Login Button
+                Button(action: {
+                    DatabaseManager.shared.loginUser(email: storedEmail, password: storedPassword) { success, message, userId, isComplete in
+                        if success, let userId = userId {
+                            self.user_id = userId
+                            self.isLoggedIn = true
+                            let defaults = UserDefaults.standard
+                            defaults.set(true, forKey: "isLoggedIn")
+                            defaults.set(true, forKey: "isComplete")
+                            print(isLoggedIn)
+                        } else {
+                            self.errorMessage = message
+                            self.showError = true
+                        }
+                    }
+                }) {
+                    Text("login".uppercased())
+                        .font(Font.custom("OpenSans-Bold", size: 14))
+                        .foregroundColor(Color.black)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 60)
+                        .background(Color.white)
+                        .cornerRadius(10)
+                }
+                .padding(.horizontal, 35)
+                .padding(.top, 30)
+                Spacer()
+                //SignUp
+                VStack(spacing: 15) {
+                    
+                    Text("Need an account?")
+                        .font(Font.custom("OpenSans-Bold", size: 14))
+                        .foregroundColor(Color.white.opacity(0.5))
+                    Button(action: {
+                        self.isRegistered = false
+                    }) {
+                        Text("sign up".uppercased())
+                            .font(Font.custom("OpenSans-Bold", size: 14))
+                            .foregroundColor(Color.white)
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 60)
+                            .background(Color.white.opacity(0.15))
+                            .cornerRadius(10)
+                    }
+                }
+                .padding(.horizontal, 90)
+                .padding(.bottom, 30)
+                SignInWithAppleButton(
+                    onRequest: { request in
+                        request.requestedScopes = [.fullName, .email]
+                    },
+                    onCompletion: { result in
+                        switch result {
+                        case .success(let authResults):
+
+                            if let credential = authResults.credential as? ASAuthorizationAppleIDCredential,
+                               let email = credential.email {
         
-        @Binding var password: String
-        var body: some View {
-            SecureField("mot de passe", text: $password)
-                .padding()
-                .cornerRadius(5.0)
-                .padding(.bottom, 20)
+                                DatabaseManager.shared.loginUser(email: email, password: "placeholder_password") { success, message, userId, isComplete in
+                                    if success, let userId = userId {
+                                        UserDefaults.standard.set(email, forKey: "email")
+                                        UserDefaults.standard.set(userId, forKey: "user_id")
+                                       
+                                    } else {
+                                        // login fail message
+                                        print(message)
+                                    }
+                                }
+                            }
+                        case .failure(let error):
+                            // Handle authentication failure
+                            print(error.localizedDescription)
+                        }
+                    }
+                )
+                .frame(width: 280, height: 45)
+                .padding(.top, 30)
+            }
+            if showError {
+                Text(errorMessage)
+                    .foregroundColor(.red)
+            }
         }
     }
-    
-    
-    
-    
+}
 
+struct RegisterView: View {
+    @Binding var isRegistered: Bool
+    @State private var email = ""
+    @State private var password = ""
+    @State private var confirmPassword = ""
+    @State private var showError = false
+    @State private var errorMessage = ""
+
+    var body: some View {
+        ZStack {
+            //fond écran
+            Image("BG_LoginView")
+                .resizable()
+                .overlay(
+                    Rectangle()
+                        .foregroundColor(Color.black.opacity(0.65))
+                )
+                .ignoresSafeArea(.all)
+
+            VStack {
+                //Logo
+                Image("Second-logo")
+                    .resizable()
+                    .frame(width: 90, height: 90)
+                    .padding(.top, 45)
+                Spacer()
+
+                VStack(spacing: 15) {
+                    VStack(alignment: .center, spacing: 30) {
+                        Text("Créer mon compte")
+                            .font(Font.custom("OpenSans-Bold", size: 24))
+                            .foregroundColor(Color.white)
+                            .padding(.bottom, 30)
+                            .padding(.top, 30)
+                        CustomTextfield(placeholder: "Email",
+                                        fontName: "OpenSans-Regular",
+                                        fontSize: 18,
+                                        fontColor: Color.white.opacity(0.3),
+                                        text: $email)
+                        CustomSecureField(placeholder: "Password",
+                                          fontName: "OpenSans-Regular",
+                                          fontSize: 18,
+                                          fontColor: Color.white.opacity(0.3),
+                                          text: $password)
+                        CustomSecureField(placeholder: "Confirm Password",
+                                          fontName: "OpenSans-Regular",
+                                          fontSize: 18,
+                                          fontColor: Color.white.opacity(0.3),
+                                          text: $confirmPassword)
+                    }
+                }
+                .padding(.horizontal, 35)
+
+
+                Button(action: {
+                    if password == confirmPassword {
+                        DatabaseManager.shared.registerUser(email: email, password: password) { success, message in
+                            if success {
+                                self.isRegistered = true
+                            } else {
+                                self.errorMessage = message
+                                self.showError = true
+                            }
+                        }
+                    } else {
+                        self.errorMessage = "Passwords do not match"
+                        self.showError = true
+                    }
+                }) {
+                    Text("register".uppercased())
+                        .font(Font.custom("OpenSans-Bold", size: 14))
+                        .foregroundColor(Color.black)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 60)
+                        .background(Color.white)
+                        .cornerRadius(10)
+                }
+                .padding(.horizontal, 35)
+                .padding(.top, 30)
+                Spacer()
+
+                VStack(spacing: 15) {
+                    Text("Already have an account?")
+                        .font(Font.custom("OpenSans-Bold", size: 14))
+                        .foregroundColor(Color.white.opacity(0.5))
+                    Button(action: {
+                        self.isRegistered = true
+                    }) {
+                        Text("login".uppercased())
+                            .font(Font.custom("OpenSans-Bold", size: 14))
+                            .foregroundColor(Color.white)
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 60)
+                            .background(Color.white.opacity(0.15))
+                            .cornerRadius(10)
+                    }
+                }
+                .padding(.horizontal, 90)
+                .padding(.bottom, 30)
+            }
+            if showError {
+                Text(errorMessage)
+                    .foregroundColor(.red)
+            }
+        }
+    }
+}
+
+
+
+struct CustomTextfield: View {
+    var placeholder: String
+    var fontName: String
+    var fontSize: CGFloat
+    var fontColor: Color
+    @Binding var text: String
+
+    var body: some View {
+        TextField(placeholder, text: $text)
+                    .font(Font.custom(fontName, size: fontSize))
+                    .foregroundColor(fontColor)
+                    .padding(.vertical, 10)
+                    .padding(.horizontal)
+                    .background(Color.gray)
+                    .cornerRadius(8)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(Color.blue, lineWidth: 1)
+                    )
+    }
+}
+
+struct CustomSecureField: View {
+    var placeholder: String
+    var fontName: String
+    var fontSize: CGFloat
+    var fontColor: Color
+    @Binding var text: String
+
+    var body: some View {
+        SecureField(placeholder, text: $text)
+                    .font(Font.custom(fontName, size: fontSize))
+                    .foregroundColor(fontColor)
+                    .padding(.vertical, 10)
+                    .padding(.horizontal)
+                    .background(Color.gray)
+                    .cornerRadius(8)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(Color.blue, lineWidth: 1)
+                    )
+    }
+}
+
+struct LoginView_Previews: PreviewProvider {
+    static var previews: some View {
+        LoginView(isLoggedIn: .constant(false))
+    }
+}
+
+struct RegisterView_Previews: PreviewProvider {
+    static var previews: some View {
+        RegisterView(isRegistered: .constant(false))
+    }
+}

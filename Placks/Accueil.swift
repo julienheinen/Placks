@@ -13,26 +13,18 @@ let BackgroundColor = Color(red: 20 / 255, green: 20 / 255, blue: 20 / 255)
 
 let BackgroundColorHeader = Color(red: 46 / 255, green: 45 / 255, blue: 44 / 255)
 
-struct AppContentView: View {
-    @State var signInSuccess = false
-    @State var pageAccueil = PageAccueil(colorBackground: .white, colorTextFriends: .black, colorBackgroundHeader: .gray, colorTextHeader: .black, opacityImages: 1.0, backgroundColorFriendStrip: .gray)
 
-    var body: some View {
-        if signInSuccess {
-            return AnyView(pageAccueil)
-        } else {
-            return AnyView(LoginView())
-        }
-    }
-}
 
 
 
 struct Accueil: View {
     @Binding var selectedTab: String
     @Binding var darkmode: Bool
-    
     //Hidding Tab Menu....
+    @AppStorage("email") var storedEmail: String = ""
+    @AppStorage("password") var storedPassword: String = ""
+    @AppStorage("isLoggedIn") var isLoggedIn: Bool = false
+    
     init(darkmode: Binding<Bool>,selectedTab: Binding<String>) {self._selectedTab = selectedTab
         self._darkmode = darkmode
         UITabBar.appearance().isHidden = true
@@ -46,6 +38,9 @@ struct Accueil: View {
             PageAccueil(colorBackground: darkmode ? BackgroundColor:.white, colorTextFriends: darkmode ? .white:.black, colorBackgroundHeader: darkmode ? BackgroundColorHeader : .white, colorTextHeader: darkmode ? .white:.purple, opacityImages: darkmode ? 0.7 : 1, backgroundColorFriendStrip: darkmode ? BackgroundColorHeader : lightGray)
                 .tag("Accueil")
             
+            ProfilView()
+                .tag("Mon profil")
+                
             Historique(BackrgoundColor: darkmode ? .black: .white)
                 .tag("Historique")
             
@@ -58,6 +53,9 @@ struct Accueil: View {
             Notifications()
                 .tag("Notifications")
             
+            ContentView()
+                .tag("Se déconnecter")
+
 
         }
         
@@ -416,7 +414,7 @@ struct PageAccueil: View {
         case 2:
             return AnyView(CameraView())
         case 3:
-            return AnyView(LoginView())
+            return AnyView(Text("Impossible"))
         case 4:
             return AnyView(QrCodeScannerView())
         case 5:

@@ -16,6 +16,8 @@ struct MainView: View {
     @State var selectedTab = "Acceuil"
     @State var showMenu = false
     @State var darkmode = false
+    @AppStorage("isLoggedIn") var isLoggedIn: Bool = false
+
     
     var body: some View {
         
@@ -69,6 +71,14 @@ struct MainView: View {
                     
                     ,alignment: .topLeading
                 )
+                        .gesture(
+            DragGesture(minimumDistance: 50)
+                .onEnded { _ in
+                    withAnimation(.spring()) {
+                        self.showMenu = true
+                    }
+                }
+        )
         }
     }
 }

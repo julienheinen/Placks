@@ -17,7 +17,6 @@
 		27AF053926889E1C00DE4B3D /* CustomCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AF053826889E1C00DE4B3D /* CustomCorners.swift */; };
 		27AF053B2689071D00DE4B3D /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AF053A2689071D00DE4B3D /* SideMenu.swift */; };
 		27AF053F2689099D00DE4B3D /* Accueil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AF053E2689099D00DE4B3D /* Accueil.swift */; };
-		27CF10F726D24DD500ED5442 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 27CF10F626D24DD500ED5442 /* CodeScanner */; };
 		F925984B2BF52BC400549396 /* QrCodeGeneratorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F925984A2BF52BC400549396 /* QrCodeGeneratorView.swift */; };
 		F925984D2BF534B400549396 /* QrCodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F925984C2BF534B400549396 /* QrCodeScannerView.swift */; };
 		F925984F2BF5378400549396 /* ProfilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F925984E2BF5378400549396 /* ProfilView.swift */; };
@@ -25,7 +24,11 @@
 		F929401E2BE8D9D800F1922D /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F929401D2BE8D9D800F1922D /* CameraView.swift */; };
 		F92940202BE8DA1E00F1922D /* UpdateTextViewExternal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F929401F2BE8DA1E00F1922D /* UpdateTextViewExternal.swift */; };
 		F92940222BE8DB7700F1922D /* LobeModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F92940212BE8DB7600F1922D /* LobeModel.mlmodel */; };
+		F950C8062C2EEC6E00F66327 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F950C8052C2EEC6E00F66327 /* DatabaseManager.swift */; };
 		F95104D12BF20D7300972AE0 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95104D02BF20D7300972AE0 /* LoginView.swift */; };
+		F954AC1B2BF6A61600EDF821 /* LoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F954AC1A2BF6A61600EDF821 /* LoadingScreen.swift */; };
+		F9B8DDD72BF60A8B001266B2 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = F9B8DDD62BF60A8B001266B2 /* CodeScanner */; };
+		F9DD80722C0471B400F186C8 /* InformationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DD80712C0471B400F186C8 /* InformationsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,7 +51,11 @@
 		F929401D2BE8D9D800F1922D /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		F929401F2BE8DA1E00F1922D /* UpdateTextViewExternal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTextViewExternal.swift; sourceTree = "<group>"; };
 		F92940212BE8DB7600F1922D /* LobeModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = LobeModel.mlmodel; sourceTree = "<group>"; };
+		F950C8052C2EEC6E00F66327 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		F95104D02BF20D7300972AE0 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		F954AC1A2BF6A61600EDF821 /* LoadingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreen.swift; sourceTree = "<group>"; };
+		F98BE3B72C344A6E009D92CD /* Placks.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Placks.entitlements; sourceTree = "<group>"; };
+		F9DD80712C0471B400F186C8 /* InformationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27CF10F726D24DD500ED5442 /* CodeScanner in Frameworks */,
+				F9B8DDD72BF60A8B001266B2 /* CodeScanner in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +75,7 @@
 			children = (
 				2765A4DA2652835E00FAECCF /* Placks */,
 				2765A4D92652835E00FAECCF /* Products */,
+				F9EEED942C31BEFF00400016 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -82,6 +90,7 @@
 		2765A4DA2652835E00FAECCF /* Placks */ = {
 			isa = PBXGroup;
 			children = (
+				F98BE3B72C344A6E009D92CD /* Placks.entitlements */,
 				F95104D22BF2703900972AE0 /* QRcode */,
 				F95104CF2BF20CD100972AE0 /* Connexion */,
 				27CF10F926D257CD00ED5442 /* Camera */,
@@ -132,6 +141,9 @@
 			children = (
 				F925984E2BF5378400549396 /* ProfilView.swift */,
 				F95104D02BF20D7300972AE0 /* LoginView.swift */,
+				F954AC1A2BF6A61600EDF821 /* LoadingScreen.swift */,
+				F9DD80712C0471B400F186C8 /* InformationsView.swift */,
+				F950C8052C2EEC6E00F66327 /* DatabaseManager.swift */,
 			);
 			path = Connexion;
 			sourceTree = "<group>";
@@ -143,6 +155,13 @@
 				F925984C2BF534B400549396 /* QrCodeScannerView.swift */,
 			);
 			path = QRcode;
+			sourceTree = "<group>";
+		};
+		F9EEED942C31BEFF00400016 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,7 +181,7 @@
 			);
 			name = Placks;
 			packageProductDependencies = (
-				27CF10F626D24DD500ED5442 /* CodeScanner */,
+				F9B8DDD62BF60A8B001266B2 /* CodeScanner */,
 			);
 			productName = Placks;
 			productReference = 2765A4D82652835E00FAECCF /* Placks.app */;
@@ -193,7 +212,7 @@
 			);
 			mainGroup = 2765A4CF2652835E00FAECCF;
 			packageReferences = (
-				27CF10F526D24DD400ED5442 /* XCRemoteSwiftPackageReference "CodeScanner" */,
+				F9B8DDD52BF60A8B001266B2 /* XCRemoteSwiftPackageReference "CodeScanner" */,
 			);
 			productRefGroup = 2765A4D92652835E00FAECCF /* Products */;
 			projectDirPath = "";
@@ -224,8 +243,10 @@
 				27AF05352688949D00DE4B3D /* MainView.swift in Sources */,
 				27AF053F2689099D00DE4B3D /* Accueil.swift in Sources */,
 				F925984F2BF5378400549396 /* ProfilView.swift in Sources */,
+				F9DD80722C0471B400F186C8 /* InformationsView.swift in Sources */,
 				F92940202BE8DA1E00F1922D /* UpdateTextViewExternal.swift in Sources */,
 				27AF053B2689071D00DE4B3D /* SideMenu.swift in Sources */,
+				F954AC1B2BF6A61600EDF821 /* LoadingScreen.swift in Sources */,
 				F925984B2BF52BC400549396 /* QrCodeGeneratorView.swift in Sources */,
 				F92940222BE8DB7700F1922D /* LobeModel.mlmodel in Sources */,
 				F929401E2BE8D9D800F1922D /* CameraView.swift in Sources */,
@@ -233,6 +254,7 @@
 				27AF053926889E1C00DE4B3D /* CustomCorners.swift in Sources */,
 				F925984D2BF534B400549396 /* QrCodeScannerView.swift in Sources */,
 				2765A4DE2652836000FAECCF /* ContentView.swift in Sources */,
+				F950C8062C2EEC6E00F66327 /* DatabaseManager.swift in Sources */,
 				277CEE2A266773F700954078 /* ImagePicker.swift in Sources */,
 				F95104D12BF20D7300972AE0 /* LoginView.swift in Sources */,
 				F929401C2BE8D95600F1922D /* MyViewController.swift in Sources */,
@@ -366,6 +388,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Placks/Placks.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Placks/Preview Content\"";
 				DEVELOPMENT_TEAM = 6SD9YP3C88;
@@ -378,6 +402,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Bambol;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -388,6 +413,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Placks/Placks.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Placks/Preview Content\"";
 				DEVELOPMENT_TEAM = 6SD9YP3C88;
@@ -400,6 +427,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Bambol;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -429,20 +457,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		27CF10F526D24DD400ED5442 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+		F9B8DDD52BF60A8B001266B2 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/twostraws/CodeScanner";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.7;
+				minimumVersion = 2.4.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		27CF10F626D24DD500ED5442 /* CodeScanner */ = {
+		F9B8DDD62BF60A8B001266B2 /* CodeScanner */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 27CF10F526D24DD400ED5442 /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			package = F9B8DDD52BF60A8B001266B2 /* XCRemoteSwiftPackageReference "CodeScanner" */;
 			productName = CodeScanner;
 		};
 /* End XCSwiftPackageProductDependency section */
