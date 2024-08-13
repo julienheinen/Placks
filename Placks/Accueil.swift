@@ -20,22 +20,26 @@ let BackgroundColorHeader = Color(red: 46 / 255, green: 45 / 255, blue: 44 / 255
 struct Accueil: View {
     @Binding var selectedTab: String
     @Binding var darkmode: Bool
+    @Binding var showHamburger: Bool // Add this line
     //Hidding Tab Menu....
     @AppStorage("email") var storedEmail: String = ""
     @AppStorage("password") var storedPassword: String = ""
     @AppStorage("isLoggedIn") var isLoggedIn: Bool = false
     
-    init(darkmode: Binding<Bool>,selectedTab: Binding<String>) {self._selectedTab = selectedTab
+    init(darkmode: Binding<Bool>, selectedTab: Binding<String>, showHamburger: Binding<Bool>) { // Add showHamburger binding here
+        self._selectedTab = selectedTab
         self._darkmode = darkmode
+        self._showHamburger = showHamburger // Initialize showHamburger here
         UITabBar.appearance().isHidden = true
     }
+    
     var body: some View {
         
         //Tab View with Tabs...
         TabView(selection: $selectedTab ){
             
             //Views...
-            PageAccueil(colorBackground: darkmode ? BackgroundColor:.white, colorTextFriends: darkmode ? .white:.black, colorBackgroundHeader: darkmode ? BackgroundColorHeader : .white, colorTextHeader: darkmode ? .white:.purple, opacityImages: darkmode ? 0.7 : 1, backgroundColorFriendStrip: darkmode ? BackgroundColorHeader : lightGray)
+            PageAccueil(showHamburger: $showHamburger, colorBackground: darkmode ? BackgroundColor:.white, colorTextFriends: darkmode ? .white:.black, colorBackgroundHeader: darkmode ? BackgroundColorHeader : .white, colorTextHeader: darkmode ? .white:.purple, opacityImages: darkmode ? 0.7 : 1, backgroundColorFriendStrip: darkmode ? BackgroundColorHeader : lightGray)
                 .tag("Accueil")
             
             ProfilView()
@@ -47,7 +51,7 @@ struct Accueil: View {
             Paramètres(darkmode: darkmode, backgroundColor: darkmode ? BackgroundColor:.white)
                 .tag("Paramètres")
             
-            Aide()
+            AideView()
                 .tag("Aide")
            
             Notifications()
@@ -58,7 +62,9 @@ struct Accueil: View {
 
 
         }
-        
+                .onAppear {
+            showHamburger = true
+        }
     }
 }
 
@@ -297,6 +303,7 @@ struct FriendsView: View {
 //All sub Views...
 struct PageAccueil: View {
     @State private var selectedView: Int? = nil
+    @Binding var showHamburger: Bool // Add this line
 
     let data: [Box] = [
         Box(id: 1, imageUrl: "Commencer-conver"),
@@ -307,8 +314,8 @@ struct PageAccueil: View {
     ]
 
     let friends: [FriendBox] = [
-        FriendBox(id: 1, title: "Julien Heinen", imageUrl: "userimage"),
-        FriendBox(id: 2, title: "Alexandre Marchal", imageUrl: "userimage")
+        FriendBox(id: 1, title: "Julien Heinen", imageUrl: "chat"),
+        FriendBox(id: 2, title: "Alexandre Marchal", imageUrl: "hibou")
     ]
 
     var colorBackground: Color
@@ -321,6 +328,7 @@ struct PageAccueil: View {
     var body: some View {
         NavigationView {
             ZStack {
+                ConnectionStatusView()
                 VStack {
                     HStack(spacing: 70) {
                         Spacer()
@@ -339,7 +347,7 @@ struct PageAccueil: View {
                                     .foregroundColor(colorTextFriends)
                             }
                             Button(action: {
-                                selectedView = 1
+                                selectedView = 6
                             }) {
                             Image(systemName: "person.fill.viewfinder")
                                 .resizable()
@@ -403,22 +411,28 @@ struct PageAccueil: View {
             .navigationBarItems(trailing: NavigationLink(destination: getView(), tag: selectedView ?? 0, selection: $selectedView) {
                 EmptyView()
             })
-
+                .onAppear {
+                showHamburger = true
+            }
         }
+
     }
+
 
     func getView() -> some View {
         switch selectedView {
         case 1:
-            return AnyView(QrCodeGeneratorView())
-        case 2:
-            return AnyView(CameraView())
-        case 3:
             return AnyView(Text("Impossible"))
+        case 2:
+            return AnyView(CameraView(showHamburger: $showHamburger))
+        case 3:
+            return AnyView(DictionnaireView(showHamburger: $showHamburger))
         case 4:
-            return AnyView(QrCodeScannerView())
+            return AnyView(QrCodeScannerView(showHamburger: $showHamburger))
         case 5:
             return AnyView(ProfilView())
+        case 6:
+            return AnyView(QrCodeGeneratorView(showHamburger: $showHamburger))
         default:
             return AnyView(Text("Impossible"))
         }
@@ -619,22 +633,4 @@ struct Paramètres: View {
     
     }
 }
-
-struct Aide: View {
-    
-    var body: some View{
-        
-        NavigationView{
-            
-            Text("Aide")
-                .font(.largeTitle)
-                .fontWeight(.heavy)
-                .foregroundColor(.primary)
-                .navigationTitle("Aide")
-            
-        }
-    }
-}
-
-
 

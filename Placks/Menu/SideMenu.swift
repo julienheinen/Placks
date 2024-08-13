@@ -18,7 +18,9 @@ struct SideMenu: View {
     @AppStorage("isLoggedIn") var isLoggedIn: Bool = false
     @AppStorage("email") var storedEmail: String = ""
     @AppStorage("password") var storedPassword: String = ""
-    @AppStorage("pp_profil") var pp_profil: String = "vache"
+    @AppStorage("pp_profil") var pp_profil: String = ""
+    @AppStorage("firstName") var firstName: String = ""
+    @AppStorage("lastName") var lastName: String = ""
     var body: some View {
         VStack(alignment: .leading, spacing: 10, content: {
             // profile picture
@@ -30,11 +32,14 @@ struct SideMenu: View {
                 .padding(.top, 85)
 
             VStack(alignment: .leading, spacing: 4) {
-    Text("Julien Heinen")
-        .font(.title)
-        .fontWeight(.heavy)
-        .foregroundColor(.white)
-
+            HStack {
+                Text(lastName)
+                    .font(.title)
+                    .foregroundStyle(Color.white)
+                Text(firstName)
+                    .font(.title)
+                    .foregroundStyle(Color.white)
+            }
 }
             // tab buttons
             VStack(alignment: .leading, spacing: 8) {

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="1a479f17-bf21-44e6-83b2-b142526889ee" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../Placks/Assets.xcassets/Gray.colorset/Contents.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Placks/Assets.xcassets/Peach.colorset/Contents.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Placks/Menu/AideView.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Placks/Menu/ProfilView.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Placks/Messagerie/Components/MessageBubble.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Placks/Messagerie/Components/MessageField.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Placks/Messagerie/Components/TitleRow.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Placks/Messagerie/Extensions.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Placks/Messagerie/MessagesManager.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Placks/Messagerie/MessagingView.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Placks/Messagerie/Models/Message.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Placks/QRcode/SelectChat.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project.xcworkspace/xcshareddata/swiftpm/Package.resolved" beforeDir="false" afterPath="$PROJECT_DIR$/project.xcworkspace/xcshareddata/swiftpm/Package.resolved" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project.xcworkspace/xcuserdata/julien.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/project.xcworkspace/xcuserdata/julien.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/xcuserdata/julien.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" beforeDir="false" afterPath="$PROJECT_DIR$/xcuserdata/julien.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Placks/Accueil.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../Placks/Accueil.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Placks/Assets.xcassets/AccentColor.colorset/Contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Placks/Assets.xcassets/AccentColor.colorset/Contents.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Placks/Camera/CameraView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../Placks/Camera/CameraView.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Placks/Connexion/InformationsView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../Placks/Connexion/InformationsView.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Placks/Connexion/ProfilView.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Placks/ContentView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../Placks/ContentView.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Placks/Menu/MainView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../Placks/Menu/MainView.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Placks/Menu/SideMenu.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../Placks/Menu/SideMenu.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Placks/PlacksApp.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../Placks/PlacksApp.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Placks/QRcode/QrCodeGeneratorView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../Placks/QRcode/QrCodeGeneratorView.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Placks/QRcode/QrCodeScannerView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../Placks/QRcode/QrCodeScannerView.swift" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 7
+}]]></component>
+  <component name="ProjectId" id="2jyTdIK25oAR81VDhyxMW6SpIAM" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "com.google.services.firebase.aqiPopupShown": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/julien/Documents/GitHub/Placks/Placks.xcodeproj"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1a479f17-bf21-44e6-83b2-b142526889ee" name="Changes" comment="" />
+      <created>1722358404188</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1722358404188</updated>
+    </task>
+    <servers />
+  </component>
+</project>

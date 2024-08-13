@@ -5,6 +5,7 @@ struct ContentView: View {
     @State private var isLoggedIn: Bool = false
     @State private var isLoading: Bool = true
     @AppStorage("isComplete") var isComplet: Bool = false
+    @State private var isEditing: Bool = false
     
     //  informations
     @AppStorage("email") var storedEmail: String = ""
@@ -37,25 +38,30 @@ struct ContentView: View {
             if !storedEmail.isEmpty && !user_id.isEmpty && !storedPassword.isEmpty {
                 DatabaseManager.shared.loginUser(email: storedEmail, password: storedPassword) { success, message, userId, isComplete in
                     if success, let userId = userId {
-                        self.isComplet = isComplete
+                        
                         self.user_id = userId
-DatabaseManager.shared.loadData(storedEmail: storedEmail, user_id: userId) { success, userData in
-        print("Data loaded successfully. User data: \(userData)")
-
+                        
+                        DatabaseManager.shared.loadData(storedEmail: storedEmail, user_id: userId) { success, userData in
     if success, let userData = userData {
+        print("User data received: \(userData)")
         // Traitement des informations récupérées
-        self.firstName = userData.prenom
-        self.lastName = userData.nom
-        self.birthDate = userData.date_de_naissance ?? ""
-        self.country = userData.pays
-        self.region = userData.region
-        self.ls = userData.langue_des_signes ?? ""
-        self.pp_profil = userData.photo
-        
+        DispatchQueue.main.async {
+            self.firstName = userData.prenom
+            self.lastName = userData.nom
+            self.birthDate = userData.date_naissance ?? ""
+            self.ls = userData.ls
+            self.country = userData.pays
+            self.region = userData.region
+            self.pp_profil = userData.photo
 
-        // Redirection vers MainView
-        self.isLoggedIn = true
+            // Redirection vers MainView
+            self.isLoggedIn = true
+            self.isComplet = true
+            
+        }
     } else {
+        self.isComplet = false
+        print("Failed to load user data")
         // Gestion de l'échec de récupération des informations
         // ...
     }

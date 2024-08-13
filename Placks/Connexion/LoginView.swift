@@ -1,3 +1,9 @@
+//
+//  LoginView.swift
+//  Placks
+//
+//  Created by Julien Heinen on 10/05/2024.
+//
 import SwiftUI
 import AuthenticationServices
 struct LoginView: View {
@@ -26,6 +32,7 @@ struct LoginView: View {
 
     var LoginViewContent: some View {
         ZStack {
+            ConnectionStatusView()
             //Bg
             Image("BG_LoginView")
                 .resizable()
@@ -37,7 +44,7 @@ struct LoginView: View {
 
             VStack {
                 //Logo
-                Image("Second-logo")
+                Image("AppIcon-Preview")
                     .resizable()
                     .frame(width: 90, height: 90)
                     .padding(.top, 45)
@@ -63,7 +70,7 @@ struct LoginView: View {
                     }
                     HStack {
                         Button(action: {
-                            // nuveau password
+                            // nuveau password à ajouter
                         }) {
                             Text("Request new password.")
                                 .font(Font.custom("OpenSans-Regular", size: 14))

@@ -10,13 +10,13 @@ import Vision
 var useCamera: Bool = true
 
 struct CameraView: View {
-    
     var controller: MyViewController = MyViewController()
     @State var showImagePicker: Bool = false
     @State private var image: UIImage?
     @State var scaling: CGSize = .init(width: 1, height: 1)
     @State private var offset = CGSize.zero
-    
+    @Binding var showHamburger: Bool // Add this line
+
     var body: some View {
         GeometryReader { geometry in
             
@@ -70,7 +70,7 @@ struct CameraView: View {
             HStack {
                 Spacer()
                 /* Icon for closing the image*/
-                Image("x")
+                Image(systemName: "x.circle.fill")
                     .resizable()
                     .opacity(self.image != nil ? 1: 0)
                     .frame(width: geometry.size.width / 15, height: geometry.size.width / 15)
@@ -93,7 +93,7 @@ struct CameraView: View {
                         }
                         self.controller.changeStatus(useCam: false, img: self.controller.camImage!)
                     }) {
-                        Image("PhotoLib")
+                        Image(systemName: "photo.stack.fill")
                             .renderingMode(.original)
                             .frame(width: geometry.size.width / 3, height: geometry.size.height / 16)
                     }.opacity(0)  // not displaying the button
@@ -102,7 +102,7 @@ struct CameraView: View {
                     Button(action: {
                         self.controller.screenShotMethod()
                     }) {
-                        Image("Button")
+                        Image(systemName: "camera.shutter.button.fill")
                             .renderingMode(.original)
                             .frame(width: geometry.size.width / 3, height: geometry.size.width / 9)
                     }.opacity(0)  // not displaying the button
@@ -111,7 +111,7 @@ struct CameraView: View {
                     Button(action: {
                         self.controller.flipCamera()
                     }) {
-                        Image("Swap")
+                        Image(systemName: "arrow.triangle.2.circlepath.camera.fill")
                             .renderingMode(.original)
                             .frame(width: geometry.size.width / 3, height: geometry.size.height / 16)
                     }.opacity(0)  // not displaying the button
@@ -125,6 +125,12 @@ struct CameraView: View {
                 .edgesIgnoringSafeArea(.all)
                 .offset(x: 0, y: self.showImagePicker ? 0: UIApplication.shared.keyWindow?.frame.height ?? 0)
         }.statusBar(hidden: true)
+        .onAppear{
+        showHamburger = false            
+        }
+        .onDisappear{
+        showHamburger = true
+        }
     }
 
 }
@@ -149,4 +155,8 @@ extension UIColor {
    }
 
 }
-
+struct CameraView_Previews: PreviewProvider {
+    static var previews: some View {
+        CameraView(showHamburger: .constant(false))
+    }
+}

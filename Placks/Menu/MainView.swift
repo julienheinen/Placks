@@ -15,6 +15,7 @@ struct MainView: View {
     //selected Tab...
     @State var selectedTab = "Acceuil"
     @State var showMenu = false
+    @State var showHamburger = true
     @State var darkmode = false
     @AppStorage("isLoggedIn") var isLoggedIn: Bool = false
 
@@ -39,46 +40,43 @@ struct MainView: View {
                     .offset(x: showMenu ? 25 : 0)
                     .padding(.vertical,30)
             
-                Accueil(darkmode: $darkmode, selectedTab: $selectedTab)
+                Accueil(darkmode: $darkmode, selectedTab: $selectedTab, showHamburger: $showHamburger)
+
                 .cornerRadius(showMenu ? 15 : 0)
                 }
             
                 //Scaling and moving
                 .scaleEffect(showMenu ? 0.84 : 1)
                 .offset(x: showMenu ? getRect().width - 120 : 0)
-                .ignoresSafeArea()
-                .overlay(
-                
-                    //Menu Button...
+            .ignoresSafeArea()
+            .overlay(
+                showHamburger ?
+                    // Menu Button...
                     Button(action: {
                         withAnimation(.spring()){
                             showMenu.toggle()
                         }
                     }, label: {
-                       // Animated Drawer Button...
+                        // Animated Drawer Button...
                         VStack(spacing: 5){
-                            
                             MenuButtonView(colorLinesHomePage: darkmode ? .white : .black, showMenu: showMenu)
-                            
                         }
-                        
-                        
-                            
-                            
                     })
                     .padding()
                     .position(x: 30, y: 55)
-                    
-                    ,alignment: .topLeading
-                )
-                        .gesture(
-            DragGesture(minimumDistance: 50)
-                .onEnded { _ in
-                    withAnimation(.spring()) {
-                        self.showMenu = true
-                    }
-                }
-        )
+                    : nil,
+                alignment: .topLeading
+            )
+            .gesture(
+                showHamburger ?
+                    DragGesture(minimumDistance: 50)
+                        .onEnded { _ in
+                            withAnimation(.spring()) {
+                                self.showMenu = true
+                            }
+                        }
+                    : nil
+            )
         }
     }
 }

@@ -130,7 +130,7 @@ Button(action: {
             birthDate: dateFormatter.string(from: birthDate),
             profilePicture: profilePicture
         )
-        DatabaseManager.putData(informations: informations) { success, message in
+        DatabaseManager.shared.putData(informations: informations) { success, message in
             DispatchQueue.main.async {
                 if success {
                     self.isComplet = true
@@ -339,7 +339,6 @@ struct CountryPage: View {
                 .padding(.bottom, 10)
                 .padding()
 
-            // Country field with autocompletion
             TextField("Country", text: $country, onEditingChanged: { editing in
                 self.isEditing = editing
             })
@@ -529,7 +528,6 @@ struct GradientTextFieldBackground: TextFieldStyle {
 
                 Image(systemName: systemImageString)
 
-                // Reference the TextField here
 
                 configuration
 
