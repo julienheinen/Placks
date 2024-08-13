@@ -1,4 +1,5 @@
-# Placks
+![Logo](https://github.com/julienheinen/Placks/blob/main/Placks/Assets.xcassets/AppIcon.appiconset/Icon-180.png?raw=true)
+# Placks - Connecting Hands, Breaking Barriers
 ![image](https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white) 
 ![image](https://img.shields.io/badge/Swift-FA7343?style=for-the-badge&logo=swift&logoColor=white) 
 ![image](https://img.shields.io/badge/Xcode-007ACC?style=for-the-badge&logo=Xcode&logoColor=white)
