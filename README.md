@@ -29,11 +29,11 @@ Inspired by this event, I began exploring the possibilities of AI to recognize s
 
 Developing Placks comes with its share of challenges:
 
-1. **Time**: The project is estimated to take 2 to 3 years to complete. Training the AI to recognize each sign language could take longer than anticipated, particularly if reliable results are to be achieved.
+1. **🕦 Time**: The project is estimated to take 2 to 3 years to complete. Training the AI to recognize each sign language could take longer than anticipated, particularly if reliable results are to be achieved.
    
-2. **Cost**: Funding is a critical factor. While I plan to contribute personal resources, the total cost of the project, especially the AI development for each sign language, could be substantial.
+2. **💶 Cost**: Funding is a critical factor. While I plan to contribute personal resources, the total cost of the project, especially the AI development for each sign language, could be substantial.
 
-3. **AI Accuracy**: The most significant challenge lies in developing an AI that is both precise and reliable. There is a risk that the AI might not meet user expectations or may struggle with regional dialects and variations in sign language.
+3. **📈 AI Accuracy**: The most significant challenge lies in developing an AI that is both precise and reliable. There is a risk that the AI might not meet user expectations or may struggle with regional dialects and variations in sign language.
 
 ## Future Benefits
 
